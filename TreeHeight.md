@@ -66,3 +66,33 @@ class Solution {
   return Math.max(rightT, leftT);
  }
 }
+
+
+class Solution {
+    public int solution(Tree T) {
+        if(T == null) return -1;
+        int result = 0;
+        result = Math.max(result, 1+solution(T.l));
+        result = Math.max(result, 1+solution(T.r));
+        return result;
+    }
+} 
+
+## PHP
+
+function solution($T) {
+    // write your code in JavaScript (Node.js 4.0.0)
+    
+    return checkTree($T);
+}
+
+function checkTree($node) {
+    if(!$node) {
+        return -1;
+    }
+    
+    $heightLeft = checkTree($node->l);
+    $heightRight = checkTree($node->r);
+    
+    return 1 + max($heightLeft, $heightRight);
+}
